@@ -34,7 +34,7 @@ function countriesData(countries) {
   if (countries.length > 10) {
     clearAll();
 
-    NeedSpecificNameNotification;
+    NeedSpecificNameNotification();
   } else if (countries.length > 1 && countries.length <= 10) {
     clearAll();
     return countries
