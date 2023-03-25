@@ -49,16 +49,19 @@ function countriesData(data) {
       .join('');
     countryListEL.innerHTML;
   } else clearAll();
-  return data.map(
-    country =>
-      `<div class = "country-card">
+  return data
+    .map(
+      country =>
+        `<div class = "country-card">
     <img  class = "country-flag" src = "${country.flags.svg}" alt = "${country.name.official} flag"
     <p class = "country-name">${country.name.official}</p>
     <p class= "capital-name">${country.capital}</p>
     <p class = "population">${country.population}</p>
     <p class = "language">${language}</p>
     </div>`
-  );
+    )
+    .join('');
+  countryInfoDiv.innerHTML;
 }
 
 //функція, яка очищає весь список країн та очищає всі дані одної країни (картки)
