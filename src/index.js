@@ -1,6 +1,6 @@
 import './css/styles.css';
 
-import _debounce from 'lodash.debounce';
+import debounce from 'lodash.debounce';
 
 import Notiflix from 'notiflix';
 
@@ -13,15 +13,16 @@ const countryListEL = document.querySelector('.country-list');
 const countryInfoDiv = document.querySelector('.country-info');
 
 //додаємо обробніка подій на інпут
-inputEl.addEventListener('input', _debounce(onSearch, DEBOUNCE_DELAY));
+inputEl.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 //опрацьовуємо отримане значення з інпуту
 function onSearch(event) {
   event.preventDefault();
   const inputCountryName = inputEl.value.trim();
   fetchCountries(inputCountryName)
-    .then(countries => {
+    .then(({ data: countries }) => {
       countriesData(countries);
+      console.log(countries);
     })
     .catch(error => {
       if (inputCountryName !== '') {
