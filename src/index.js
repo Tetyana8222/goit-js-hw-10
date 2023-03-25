@@ -4,7 +4,7 @@ import _debounce from 'lodash.debounce';
 
 import Notiflix from 'notiflix';
 
-import { fetchCountries } from './fetchCountries.js';
+import fetchCountries from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
 //доступ до елемнтів input
