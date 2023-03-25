@@ -9,8 +9,8 @@ import fetchCountries from './fetchCountries';
 const DEBOUNCE_DELAY = 300;
 //доступ до елемнтів input
 const inputEl = document.querySelector('#search-box');
-const countryListEL = document.querySelector('country-list');
-const countryInfoDiv = document.querySelector('country-info');
+const countryListEL = document.querySelector('.country-list');
+const countryInfoDiv = document.querySelector('.country-info');
 
 //додаємо обробніка подій на інпут
 inputEl.addEventListener('input', _debounce(onSearch, DEBOUNCE_DELAY));
@@ -25,7 +25,6 @@ function onSearch(event) {
     })
     .catch(error => {
       if (inputCountryName !== '') {
-        //можна зробити окремі функціі на сповіщення
         showNoMatchNotification();
       }
     });
@@ -33,7 +32,7 @@ function onSearch(event) {
 function countriesData(countries) {
   if (countries.length > 10) {
     clearAll();
-    //можна зробити окремі функціі на сповіщення
+
     NeedSpecificNameNotification;
   } else if (countries.length > 1 && countries.length <= 10) {
     clearAll();
