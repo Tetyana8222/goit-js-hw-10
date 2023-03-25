@@ -17,8 +17,12 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  background-color: floralwhite;
 }
 
 .country {
   list-style: none;
+}
+.country-list .paragraph-name {
+  font-size: 24px;
 }
