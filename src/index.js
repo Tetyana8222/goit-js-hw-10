@@ -69,7 +69,7 @@ function countriesCard(countries) {
     .map(
       country =>
         `<li class = "country">
-     <img  class = "paragraph-name" width="80"
+     <img  class = "picture" width="80"
     src = "${country.flags.svg}"
      alt = "${country.name.official} flag" />
       <p class = "paragraph-name">Country: ${country.name.official}</p>
