@@ -50,9 +50,9 @@ function countriesData(countries) {
     .map(
       country =>
         `<div class = "country-card">
-    <img  class = "country-flag" src = "${country.flags.svg}" alt = "${
-          country.name.official
-        } flag"
+    <img  class = "country-flag"
+    src = "${country.flags.svg}"
+     alt = "${country.name.official} flag"
     <p class = "country-name">${country.name.official}</p>
     <p class= "capital-name">${country.capital}</p>
     <p class = "population">${country.population}</p>
@@ -63,7 +63,6 @@ function countriesData(countries) {
   countryInfoDiv.innerHTML;
 }
 
-//функція, яка очищає весь список країн та очищає всі дані одної країни (картки)
 function showNoMatchNotification() {
   Notiflix.Notify.failure('Oops, there is no country with that name');
 }
@@ -72,6 +71,7 @@ function NeedSpecificNameNotification() {
     'Too many matches found. Please enter a more specific name.'
   );
 }
+//функція, яка очищає весь список країн та очищає всі дані одної країни (картки)
 function clearAll() {
   countryListEL.innerHTML = '';
   countryInfoDiv.innerHTML = '';
