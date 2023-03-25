@@ -20,26 +20,24 @@ function onSearch(event) {
   event.preventDefault();
   const inputCountryName = inputEl.value.trim();
   fetchCountries(inputCountryName)
-    .then(data => {
-      countriesData(data);
+    .then(countries => {
+      countriesData(countries);
     })
     .catch(error => {
       if (inputCountryName !== '') {
         //можна зробити окремі функціі на сповіщення
-        Notiflix.Notify.failure('Oops, there is no country with that name');
+        showNoMatchNotification();
       }
     });
 }
-function countriesData(data) {
-  if (data.length > 10) {
+function countriesData(countries) {
+  if (countries.length > 10) {
     clearAll();
     //можна зробити окремі функціі на сповіщення
-    Notiflix.Notify.info(
-      'Too many matches found. Please enter a more specific name.'
-    );
-  } else if (data.length > 1 && data.length <= 10) {
+    NeedSpecificNameNotification;
+  } else if (countries.length > 1 && countries.length <= 10) {
     clearAll();
-    return data
+    return countries
       .map(
         country => `<li class = "country">
         <img src = "${country.flags.svg}"/>
@@ -49,15 +47,17 @@ function countriesData(data) {
       .join('');
     countryListEL.innerHTML;
   } else clearAll();
-  return data
+  return countries
     .map(
       country =>
         `<div class = "country-card">
-    <img  class = "country-flag" src = "${country.flags.svg}" alt = "${country.name.official} flag"
+    <img  class = "country-flag" src = "${country.flags.svg}" alt = "${
+          country.name.official
+        } flag"
     <p class = "country-name">${country.name.official}</p>
     <p class= "capital-name">${country.capital}</p>
     <p class = "population">${country.population}</p>
-    <p class = "language">${language}</p>
+    <p class = "language">${Object.values(languages)}</p>
     </div>`
     )
     .join('');
@@ -65,6 +65,14 @@ function countriesData(data) {
 }
 
 //функція, яка очищає весь список країн та очищає всі дані одної країни (картки)
+function showNoMatchNotification() {
+  Notiflix.Notify.failure('Oops, there is no country with that name');
+}
+function NeedSpecificNameNotification() {
+  Notiflix.Notify.info(
+    'Too many matches found. Please enter a more specific name.'
+  );
+}
 function clearAll() {
   countryListEL.innerHTML = '';
   countryInfoDiv.innerHTML = '';
