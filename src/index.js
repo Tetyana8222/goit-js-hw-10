@@ -18,13 +18,14 @@ inputEl.addEventListener('input', _debounce(onSearch, DEBOUNCE_DELAY));
 //опрацьовуємо отримане значення з інпуту
 function onSearch(event) {
   event.preventDefault();
-  const inputCountryName = event.target.value.trim();
+  const inputCountryName = inputEl.value.trim();
   fetchCountries(inputCountryName)
     .then(data => {
       countriesData(data);
     })
     .catch(error => {
       if (inputCountryName !== '') {
+        //можна зробити окремі функціі на сповіщення
         Notiflix.Notify.failure('Oops, there is no country with that name');
       }
     });
@@ -40,14 +41,24 @@ function countriesData(data) {
     clearAll();
     return data
       .map(
-        country => `<li class = 'country'>
-        <img src = '${country.flags.svg}'/>
-        <p>${country.name}</p>
+        country => `<li class = "country">
+        <img src = "${country.flags.svg}"/>
+        <p class = "country-name">${country.name.official}</p>
         </li>`
       )
       .join('');
     countryListEL.innerHTML;
-  }
+  } else clearAll();
+  return data.map(
+    country =>
+      `<div class = "country-card">
+    <img  class = "country-flag" src = "${country.flags.svg}" alt = "${country.name.official} flag"
+    <p class = "country-name">${country.name.official}</p>
+    <p class= "capital-name">${country.capital}</p>
+    <p class = "population">${country.population}</p>
+    <p class = "language">${language}</p>
+    </div>`
+  );
 }
 
 //функція, яка очищає весь список країн та очищає всі дані одної країни (картки)
