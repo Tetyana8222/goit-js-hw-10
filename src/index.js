@@ -26,11 +26,11 @@ function onSearch(event) {
         NeedSpecificNameNotification();
       } else if (countries.length > 1 && countries.length <= 10) {
         clearAll();
-        countriesListLayOut(countries);
+        countriesCard(countries);
       }
       if (countries.length === 1) {
         clearAll();
-        countriesCard(countries);
+        countriesListLayOut(countries);
       }
       // if (countries.length === 0) {
       //   clearAll();
