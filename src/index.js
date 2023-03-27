@@ -18,6 +18,9 @@ inputEl.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 //опрацьовуємо отримане значення з інпуту
 function onSearch(event) {
   let inputCountryName = event.target.value.trim();
+  if (inputCountryName === '') {
+    return;
+  }
   fetchCountries(inputCountryName)
     .then(countries => {
       console.log(countries);
