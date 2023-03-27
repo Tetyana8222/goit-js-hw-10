@@ -14,10 +14,12 @@ body {
 
 #search-box {
   font: inherit;
-  padding: 8px;
-  max-width: 320px;
-  margin-bottom: 16px;
-  background-color: floralwhite;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 520px;
+  width: 100%;
+  margin: 16px auto;
+  display: block;
 }
 
 .country {
